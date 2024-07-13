@@ -15,11 +15,12 @@ try {
 
     ws.on('message', function message(data) {
         console.log('received: %s', data);
+        handleMessage(data, ws, sessionStoreRooms)
       });
 
     ws.send(JSON.stringify({"action":"serverDetails","serverId":serverId+""}))
     });
-    
+
     console.log("Web socket server started successfully",port)
    } catch (error) {
     console.error("Error while starting the web socket server")
